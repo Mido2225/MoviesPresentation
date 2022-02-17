@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 @propertyWrapper
 struct ValueDefault<Value> {
     
@@ -24,6 +23,7 @@ struct ValueDefault<Value> {
         }
     }
 }
+
 @propertyWrapper
 struct ModelsDefault<Model: Codable> {
     
@@ -49,30 +49,27 @@ struct ModelsDefault<Model: Codable> {
 }
 
 extension UserDefaults {
-    
-    private enum Keys: String {
-        case isLogin
-        case appUser
-        case accessToken
-        case pushNotificationToken
-        case userType
-        case isFirstTime
-        case selectedUserType
+    private enum Keys {
+        static let isLogin = "isLogin"
+        static let accessToken = "accessToken"
+        static let pushNotificationToken = "pushNotificationToken"
+        static let isFirstTime = "isFirstTime"
     }
     
-    @ValueDefault(key: Keys.isFirstTime.rawValue, defualtValue: false)
-    static var isFirstTime: Bool
-    @ValueDefault(key: Keys.isLogin.rawValue, defualtValue: false)
+    @ValueDefault(key: Keys.isLogin, defualtValue: false)
     static var isLogin: Bool
-    @ModelsDefault(key: Keys.appUser.rawValue, defualtValue: nil)
-    static var user: User?
-    @ModelsDefault(key: Keys.accessToken.rawValue, defualtValue: nil)
+
+    @ModelsDefault(key: Keys.accessToken, defualtValue: nil)
     static var accessToken: String?
-    @ModelsDefault(key: Keys.pushNotificationToken.rawValue, defualtValue: nil)
+    
+    @ModelsDefault(key: Keys.pushNotificationToken, defualtValue: nil)
     static var pushNotificationToken: String?
-    @ModelsDefault(key: Keys.userType.rawValue, defualtValue: .guest)
-    static var userType: UserTypes
-    @ModelsDefault(key: Keys.selectedUserType.rawValue, defualtValue: .guest)
-    static var selectedUserType: UserTypes
+    
+    @ModelsDefault(key: Keys.isFirstTime, defualtValue: true)
+    static var isFirstTime: Bool
+    
+
 }
+
+
 
