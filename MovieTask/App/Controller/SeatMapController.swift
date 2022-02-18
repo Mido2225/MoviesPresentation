@@ -100,7 +100,6 @@ extension SeatMapController:UICollectionViewDelegate {
 }
 
 extension SeatMapController:UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == datesCollectionView {
             return CGSize(width: 65, height: 30)

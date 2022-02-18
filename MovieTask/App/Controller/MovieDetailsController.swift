@@ -32,6 +32,8 @@ class MovieDetailsController: BaseVC {
     
     
     
+    
+    
     //MARK: - LifeCycle Events -
 
     override func viewDidLoad() {
@@ -55,14 +57,14 @@ class MovieDetailsController: BaseVC {
     
     
     //MARK: - Business Logic -
-    func registerCollectionCell() {
+    private func registerCollectionCell() {
         genresCollectionView.dataSource = self
         genresCollectionView.delegate = self
         genresCollectionView.register(cellType: GenresCell.self, bundle: nil)
     }
     
     
-    func generateRandomColor() -> UIColor {
+    private func generateRandomColor() -> UIColor {
         let redValue = CGFloat.random(in: 0...1)
         let greenValue = CGFloat.random(in: 0...1)
         let blueValue = CGFloat.random(in: 0...1)
@@ -71,7 +73,6 @@ class MovieDetailsController: BaseVC {
         
         return randomColor
     }
-    
     
     
     
@@ -115,7 +116,7 @@ class MovieDetailsController: BaseVC {
     
     
     @IBAction func gitTicketsButton(_ sender: UIButton) {
-        let vc = AppStoryboards.search.instantiate(FinalSearchResultsController.self)
+        let vc = AppStoryboards.search.instantiate(SeatMapController.self)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
